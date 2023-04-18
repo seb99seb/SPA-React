@@ -17,7 +17,6 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 
-
 export { useFetchPopularMoviesQuery, useFetchHighestRatedMoviesQuery, useFetchSearchMovieQuery } from './apis/moviesApi';
 export {changeSearchTerm};
 

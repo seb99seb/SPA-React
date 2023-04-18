@@ -10,7 +10,6 @@ const searchMovieSlice = createSlice({
             state.searchTerm = action.payload;
         }     
     }
-
 })
 
 //actions er ActionCreators der kan tage et payload som argument, fx er removeCar en ActionCreator-function der tager et payload som 
