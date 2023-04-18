@@ -4,13 +4,14 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const creaturesApi = createApi({
   reducerPath: 'creatures',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://www.dnd5eapi.co/api/monsters'
+    baseUrl: 'https://www.dnd5eapi.co'
   }),
   endpoints(builder) {
     return {
       fetchAllCreatures: builder.query({
         query: () => {
           return {
+            url: '/api/monsters',
             method: 'GET',
           };
         },
@@ -18,14 +19,22 @@ const creaturesApi = createApi({
       fetchSpecificCreature: builder.query({
         query: (index) => {
           return {
-            url: '/'+index,
+            url: '/api/monsters/'+index,
             method: 'GET',
           };
         },
-      })
+      }),
+      /*fetchCreatureImage: builder.query({
+        query: (creatureURL) => {
+          return {
+            url: creatureURL,
+            method: 'GET',
+          };
+        },
+      })*/
     };
   },
 });
 
-export const {useFetchAllCreaturesQuery, useFetchSpecificCreatureQuery} = creaturesApi;
+export const {useFetchAllCreaturesQuery, useFetchSpecificCreatureQuery, useFetchCreatureImageQuery} = creaturesApi;
 export { creaturesApi };

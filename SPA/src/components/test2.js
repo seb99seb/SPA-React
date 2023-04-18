@@ -1,7 +1,7 @@
 function Test2() {
     return (
         <div>
-            TESTTTT TWOOOO
+            temp
         </div>
     )
 }

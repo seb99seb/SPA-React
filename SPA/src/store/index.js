@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore, /*getDefaultMiddleware*/ } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { creaturesApi } from './apis/creaturesApi';
 import { searchCreatureReducer, changeSearchTerm } from './searchCreatureSlice';
@@ -17,5 +17,5 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export { useFetchAllCreaturesQuery } from './apis/creaturesApi';
+export { useFetchAllCreaturesQuery, useFetchSpecificCreatureQuery, useFetchCreatureImageQuery } from './apis/creaturesApi';
 export { changeSearchTerm };
