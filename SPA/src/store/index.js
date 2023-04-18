@@ -1,22 +1,21 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
-import { moviesApi } from './apis/moviesApi';
-import { searchMovieReducer, changeSearchTerm } from './searchMovieSlice';
+import { creaturesApi } from './apis/creaturesApi';
+import { searchCreatureReducer, changeSearchTerm } from './searchCreatureSlice';
 
 
 export const store = configureStore({
   reducer: {
-    [moviesApi.reducerPath]: moviesApi.reducer, //dette er en mere sikker måde, ungår "typo's"
-    searchMovie: searchMovieReducer
+    [creaturesApi.reducerPath]: creaturesApi.reducer, //dette er en mere sikker måde, ungår "typo's"
+    searchCreature: searchCreatureReducer
   },
   middleware: (getDefaultMiddleware) => {  //Thunk middelware er default når der benyttes Redux Toolkit configureStore.
     return getDefaultMiddleware()
-    .concat(moviesApi.middleware);
+    .concat(creaturesApi.middleware);
   }
 });
 
 setupListeners(store.dispatch);
 
-export { useFetchPopularMoviesQuery, useFetchHighestRatedMoviesQuery, useFetchSearchMovieQuery } from './apis/moviesApi';
-export {changeSearchTerm};
-
+export { useFetchAllCreaturesQuery } from './apis/creaturesApi';
+export { changeSearchTerm };
