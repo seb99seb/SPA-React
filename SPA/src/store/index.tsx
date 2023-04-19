@@ -17,5 +17,6 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export { useFetchAllCreaturesQuery, useFetchSpecificCreatureQuery, useFetchCreatureImageQuery } from './apis/creaturesApi';
+export { useFetchAllCreaturesQuery, useFetchSpecificCreatureQuery } from './apis/creaturesApi';
 export { changeSearchTerm };
+export type RootState = ReturnType<typeof store.getState>

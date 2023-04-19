@@ -1,22 +1,28 @@
-import { /*useFetchCreatureImageQuery, */useFetchSpecificCreatureQuery } from "../store";
+import { JsxAttribute, convertToObject } from "typescript";
+import { /*useFetchCreatureImageQuery, */useFetchSpecificCreatureQuery, RootState } from "../store";
 import { useSelector } from "react-redux";
 //import Creature from "../classes/creature";
 
+//doenst
+
 function MoreCreatureInfo(){
-    const creature = useSelector((state) => {
-        return state.searchCreature.searchTerm;
-    });
+    const creature = useSelector((state: RootState) => {
+        return JSON.parse(state.searchCreature.searchTerm);
+    })
     const {data, isFetching } = useFetchSpecificCreatureQuery(creature.creature.index);
 
-    let content
+    let content: any
+    let stall: JSX.Element
+    let speed: string | undefined
+
     if (isFetching) {
-        content = <div>Loading;</div>
+        stall = <div>Loading;</div>
     }
     else{
         //console.log(data)
         content = data
         var imageContent = 'https://www.dnd5eapi.co' + content.image
-        var speed = content.speed.walk + " walking"
+        speed = content.speed.walk + " walking"
         if (content.speed.climb !== undefined){
             speed += ', '+ content.speed.climb + ' climbing'
         }
@@ -27,7 +33,7 @@ function MoreCreatureInfo(){
             speed += ', '+ content.speed.fly + ' flying'
         }
     }
-    function statCalc(num){
+    function statCalc(num: number){
         if (num % 2 !== 0){
             num--
         }
@@ -60,7 +66,7 @@ function MoreCreatureInfo(){
             }
             return (
                 <div>
-                {content.proficiencies.map(skill => (
+                {content.proficiencies.map((skill:any) => (
                     <li>
                         {skill.proficiency.name} +{skill.value}
                     </li>
@@ -78,7 +84,7 @@ function MoreCreatureInfo(){
         if (content.proficiencies !== undefined){
             return (
                 <div>
-                {content.special_abilities.map(trait => (
+                {content.special_abilities.map((trait:any) => (
                     <li>
                         <b>{trait.name}</b>: {trait.desc}
                     </li>
@@ -96,7 +102,7 @@ function MoreCreatureInfo(){
         if (content.proficiencies !== undefined){
             return (
                 <div>
-                {content.actions.map(action => (
+                {content.actions.map((action:any) => (
                     <li>
                         <b>{action.name}</b>: {action.desc}
                     </li>
@@ -113,7 +119,7 @@ function MoreCreatureInfo(){
     function getImage() {
         if (content.image !== undefined){
             return (
-                <div >
+                <div>
                     <img src={imageContent} alt=""></img>
                 </div>
             )

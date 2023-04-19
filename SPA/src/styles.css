@@ -16,6 +16,7 @@
     width: 33.33%;
     margin-bottom: 1%;
     text-align: center;
+    font-size: 40px;
 }
 .Creatures{
     float: left;
@@ -32,8 +33,116 @@
     width: 60%;
     height: auto;
 }
+.TheBox{
+    background-color: #f4e4ca;
+    border-style: solid;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    width:45%;
+    max-height: 565px;
+    float: left;
+    margin: 0.5%;
+    color: #601712;
+}
+.InfoScroll{
+    overflow-y: auto;
+    max-height: 317px;
+    display: inline-block;
+    width: 100%;
+}
+.Leftie{
+    width: 60%;
+    display: inline-block;
+}
+.SearchLeft{
+    width: 100%;
+    display: inline-block;
+}
+.Center{
+    text-align: center;
+}
+.Fav{
+    float: right;
+    margin: 1.8%;
+}
+.Rightie{
+    float: right;
+    align-content: center;
+    margin: 2%;
+}
+.CL{
+    float: right;
+    margin: 0.8%;
+}
+.CL2{
+    float: right;
+    padding: 0px;
+    width: 15%;
+}
+.Transformed{
+    width: 75%;
+    display: inline-block;
+}
+.HPBAR{
+    width: 11%;
+    margin-left: 1.8%;;
+}
+.CBox{
+    padding: 5px;
+    border-bottom-style: solid;
+}
+.CBoxA{
+    padding: 5px;
+    padding-bottom: 8px;
+    border-bottom-style: solid;
+}
+.CBox2{
+    padding: 1%;
+    border-bottom-style: solid;
+}
+.Scroll{
+    overflow-y: scroll;
+    width: 100%;
+    height: 436px;
+}
+.CBoxbottom{
+    padding: 5px;
+}
+.LB{
+    white-space: pre-wrap;
+}
 .Image{
     float: left;
-    width: 40%;
+    width: 35.5%;
     height: auto;
+    max-height: 566px;
+    margin-top: 0.5%;
+    margin-right: 0.5%;
+    float: left;
+}
+.Stat{
+    float: left;
+    width: 18%;
+    text-align: center;
+    padding: 8px;
+}
+.FirstStat{
+    float: left;
+    width: 12%;
+    text-align: center;
+    padding: 8px;
+}
+.Above{
+    border-top-style: solid;
+}
+.Option{
+    width: 100%;
+    height: 50px;
+}
+.Name{
+    font-size: 20px;
+    font-weight: bold;
+}
+.Background{
+    background-color: black;
 }
