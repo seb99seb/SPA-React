@@ -1,6 +1,5 @@
 import { useFetchAllFavCreaturesQuery } from "../store";
 import SearchCreature from "./searchCreature";
-import axios from "axios";
 
 function SavedCreatures() {
     const {data, isFetching } = useFetchAllFavCreaturesQuery(null);

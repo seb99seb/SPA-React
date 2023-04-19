@@ -1,40 +1,16 @@
 {
-    "creatures": [
-      {
-        "id": 2,
-        "index": "ancient-brass-dragon",
-        "name": "Ancient Brass Dragon",
-        "URL": "/api/monsters/ancient-brass-dragon"
-      },
-      {
-        "name": "Aboleth",
-        "index": "aboleth",
-        "URL": "/api/monsters/aboleth",
-        "id": 3
-      },
-      {
-        "name": "Assassin",
-        "index": "assassin",
-        "URL": "/api/monsters/assassin",
-        "id": 4
-      },
-      {
-        "name": "Blue Dragon Wyrmling",
-        "index": "blue-dragon-wyrmling",
-        "URL": "/api/monsters/blue-dragon-wyrmling",
-        "id": 5
-      },
-      {
-        "name": "Commoner",
-        "index": "commoner",
-        "URL": "/api/monsters/commoner",
-        "id": 6
-      },
-      {
-        "name": "Ettercap",
-        "index": "ettercap",
-        "URL": "/api/monsters/ettercap",
-        "id": 7
-      }
-    ]
-  }
+  "creatures": [
+    {
+      "name": "Adult Bronze Dragon",
+      "index": "adult-bronze-dragon",
+      "URL": "/api/monsters/adult-bronze-dragon",
+      "id": 2
+    },
+    {
+      "name": "Black Dragon Wyrmling",
+      "index": "black-dragon-wyrmling",
+      "URL": "/api/monsters/black-dragon-wyrmling",
+      "id": 5
+    }
+  ]
+}

@@ -2,23 +2,35 @@ import { /*useFetchCreatureImageQuery, */useFetchSpecificCreatureQuery, useFetch
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-//import Creature from "../classes/creature";
-/*function SavedCreatures(){
-    const {dataFav, isFetchingFav } = useFetchAllFavCreaturesQuery();
-    
-    async function UnFavCreature(){
-        dataFav.array.forEach(creature => {
-            console.log(creature)
-        });
-        const response = await axios.delete(`http://localhost:3000/creatures/${0}`);
-        console.log(dataFav)
-        return response.data;
-    }
-}*/
+let id = null
+let match = false
 function MoreCreatureInfo(){
     const creature = useSelector((state) => {
         return state.searchCreature.searchTerm;
     });
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    let favList
+    allFavCreature()
+    sleep(50000)
+    function ToggleFav(){
+        if (!match){
+            FavCreature()
+        }
+        else{
+            DeleteCreature()
+        }
+    }
+    function FavText(){
+        if (!match){
+            return <a>Toggle Favorite</a>
+        }
+        else{
+            return <a>Unfavorite</a>
+        }
+    }
     async function FavCreature(){
         const response = await axios.post('http://localhost:3000/creatures', {
             name: content.name,
@@ -27,15 +39,33 @@ function MoreCreatureInfo(){
           });
         return response.data;
     }
-
+    async function DeleteCreature(){
+        const response = await axios.delete(`http://localhost:3000/creatures/${id}`);
+        return response.data;
+    }
+    async function allFavCreature(){
+        match = false
+        const response = await axios.get('http://localhost:3000/creatures');
+        favList = response.data
+        id = null
+        console.log(favList)
+        favList.forEach(element => {
+                console.log(content.name, element.name)
+                if (element.name == content.name){
+                    console.log("HERE")
+                    id = element.id
+                    match = true
+                    console.log(id)
+                }
+        });
+    }
     const {data, isFetching } = useFetchSpecificCreatureQuery(creature.creature.index);
 
     let content
     if (isFetching) {
         content = <div>Loading;</div>
     }
-    else {
-        //console.log(data)
+    else{
         content = data
 
         var imageContent = 'https://www.dnd5eapi.co' + content.image
@@ -49,6 +79,8 @@ function MoreCreatureInfo(){
         if (content.speed.fly !== undefined){
             speed += ', '+ content.speed.fly + ' flying'
         }
+
+        //document.getElementById("me").click();
     }
     function statCalc(num){
         if (num % 2 !== 0){
@@ -158,7 +190,7 @@ function MoreCreatureInfo(){
                             <i>{content.size} {content.type}</i>
                         </div>
                         <div className="Fav">
-                            <button onClick={FavCreature}>Fav Toggle</button>
+                            <button onClick={ToggleFav}>{FavText()}</button>
                         </div>
                 </div>
                 <div className="CBox">
