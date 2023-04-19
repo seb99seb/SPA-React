@@ -24,14 +24,6 @@ const creaturesApi = createApi({
           };
         },
       }),
-      /*fetchCreatureImage: builder.query({
-        query: (creatureURL) => {
-          return {
-            url: creatureURL,
-            method: 'GET',
-          };
-        },
-      })*/
     };
   },
 });

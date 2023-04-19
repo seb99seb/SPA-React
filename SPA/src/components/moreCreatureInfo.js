@@ -1,20 +1,43 @@
-import { /*useFetchCreatureImageQuery, */useFetchSpecificCreatureQuery } from "../store";
+import { /*useFetchCreatureImageQuery, */useFetchSpecificCreatureQuery, useFetchAllFavCreaturesQuery, useAddPostCreatureQuery } from "../store";
 import { useSelector } from "react-redux";
-//import Creature from "../classes/creature";
+import axios from "axios";
 
+//import Creature from "../classes/creature";
+/*function SavedCreatures(){
+    const {dataFav, isFetchingFav } = useFetchAllFavCreaturesQuery();
+    
+    async function UnFavCreature(){
+        dataFav.array.forEach(creature => {
+            console.log(creature)
+        });
+        const response = await axios.delete(`http://localhost:3000/creatures/${0}`);
+        console.log(dataFav)
+        return response.data;
+    }
+}*/
 function MoreCreatureInfo(){
     const creature = useSelector((state) => {
         return state.searchCreature.searchTerm;
     });
+    async function FavCreature(){
+        const response = await axios.post('http://localhost:3000/creatures', {
+            name: content.name,
+            index: content.index,
+            URL: content.url
+          });
+        return response.data;
+    }
+
     const {data, isFetching } = useFetchSpecificCreatureQuery(creature.creature.index);
 
     let content
     if (isFetching) {
         content = <div>Loading;</div>
     }
-    else{
+    else {
         //console.log(data)
         content = data
+
         var imageContent = 'https://www.dnd5eapi.co' + content.image
         var speed = content.speed.walk + " walking"
         if (content.speed.climb !== undefined){
@@ -135,7 +158,7 @@ function MoreCreatureInfo(){
                             <i>{content.size} {content.type}</i>
                         </div>
                         <div className="Fav">
-                            <button >Favorite Creature</button>
+                            <button onClick={FavCreature}>Fav Toggle</button>
                         </div>
                 </div>
                 <div className="CBox">

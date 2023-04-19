@@ -112,7 +112,7 @@
     "**/*.tsx",
     "**/**/*.ts",
     "**/**/*.tsx"
-  ],
+, "src/components/savedCreatures.js", "src/store/apis/creaturesJSON.js", "src/store/addUser.js"  ],
   "rules": {
     "no-unused-vars": 0
   }
